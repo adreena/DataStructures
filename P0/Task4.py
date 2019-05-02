@@ -54,7 +54,6 @@ def find_telemarketers(calls, texts):
 	for text in texts:
 		phone_1 = call[0]
 		phone_2 = call[1]
-		# never receive call:
 		if phone_1 not in texters:
 			texters.append(phone_1)
 		if phone_2 not in texters:
