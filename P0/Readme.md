@@ -6,7 +6,7 @@
 
 -----
 
-- Task1: O(n * m) ~ O(n^2) worst case
+- Task1: O(n * m) ~ O(n^2) worst case as if all numbers are unique
   - loop through calls: O(n)
     - check if is in unique_number_list: O(m) 
   - loop through texts: O(n)
@@ -14,15 +14,13 @@
 
 -----
  
- - Task2: O(n * m) ~ O(n)
-   - loop thought calls: O(n) 
-   - splitting phone number: O(m) which is not significant
-   - getting month_name : O(1) direct access by index from the list of months
-   
+ - Task2: O(n) + O(n * m) : worst case is O(n^2) if all numbers are unique
+   - loop through all calls to collect numbers and times O(n) * check the dictiorany each time for existing key O(m): O(n * m) 
+   - loop throught all numbers and find max O(n)
 -----
 
 - Task 3:
-   - PartA:  O(n * m) + O(nlogn) = O(nlogn),  m is not a big number becuase phone numbers length are limited compared to the length of all calls in dataset
+   - PartA:  O(n * m) + O(nlogn) = O(nlogn),  m is not significant becuase phone numbers length are limited compared to the length of all calls in dataset
      - find_code(): O(n * m) loops through all calls n, and m as length of phone number
        - is_fixed_line() : O(1) just checks for 1 characer by direct access
        - get_fixed_line_code(): O(m), m as length of phone number for splitting phone number by ) 
@@ -39,16 +37,11 @@
 
 -----
 
-- Task 4: O(n * m) + O(nlogn) + O(n) = O(n^2) , in the worst case m is a big list O(n^2) 
+- Task 4: O(n^2) + O(nlogn) + O(n) = O(n^2) , in the worst case m is a big list O(n^2) 
   - find_telemarketers:
-    - checking for text reciever and senders: O(n * m)
-      - O(n) loop throught texts 
-      - check if number is in texters list: O(m)
-    - checking phone_calls list if received a call: O(n * m)
-       - O(n) loop through calls
-       - O(m) check if number is already in list of received calls to avoid dplication
-    - checking phone_calls list if caller is a telemarker: O(n * m)
-       - O(n) loop through calls
-       - O(m) check if it's not in 2 lits of recevied_calls and texters
+    - collecting all numbers O(n) * checking for unique numbers O(n) : O(n^2)
+    - collecting phone_calls in texts O(n) * checking for unique numbers : O(n^2)
+    - collect all numbers which received a call O(n) * check for unique numbers: O(n^2)
+    - Loop through all_numbers O(n) and check both texters and incoming_call lists: O(n^2)
    - sorting: O(nlogn)
    - print: O(n)
