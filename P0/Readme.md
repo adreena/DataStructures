@@ -22,7 +22,7 @@
 -----
 
 - Task 3:
-   - PartA:  O(n * m) + O(nlogn) = O(nlogn) assuming m is not a big number becuase phone numbers are not lengthy
+   - PartA:  O(n * m) + O(nlogn) = O(nlogn),  m is not a big number becuase phone numbers length are limited compared to the length of all calls in dataset
      - find_code(): O(n * m) loops through all calls n, and m as length of phone number
        - is_fixed_line() : O(1) just checks for 1 characer by direct access
        - get_fixed_line_code(): O(m), m as length of phone number for splitting phone number by ) 
@@ -32,3 +32,8 @@
      - printing :
        - sort: O(nlong)
        - printing: O(n)
+   - PartB: O(n * m), but m is not significant and it's the length of longest phone number so the time complexity is O(n)
+     - loop through calls: O(n)
+       - is_fixed_line() : O(1) just checks for 1 characer by direct access
+       - get_fixed_line_code(): O(m), m as length of phone number for splitting phone number by ) 
+
