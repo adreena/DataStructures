@@ -25,19 +25,6 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-# Time Complexity: O(n*m) + O(nlogn), if m is a big list O(n^2) and if m is not significant: O(nlogn)
-#   find_telemarketers:
-#    - checking text recieveer and senders: O(n*m)
-#    	- O(n) loop throught texts 
-#       - check numbers in texters list: O(m)
-#    - checking phone calls list if received a call: O(n*m)
-#       - O(n) loop through calls
-#       - O(m) check if already in list of received calls to avoid dplication
-#    - checking phone calls list if caller is telemarker:O(n*m)
-#       - O(n) loop through calls
-#       - O(m) check if it's not in 2 lits of recevied_calls and texters
-#   sorting: O(nlogn)
-#     - print: O(n)
 
 def is_possibly_telemarketer(phone):
 	mid = int(len(phone)/2)

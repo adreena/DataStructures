@@ -44,8 +44,9 @@ to other fixed lines in Bangalore."
 The percentage should have 2 decimal digits
 """
 
-
+# --------------------------
 # Part A
+# --------------------------
 def is_fixed_line(phone):
 	if phone[0] == '(':
 		return True
@@ -78,16 +79,7 @@ def find_code(phone):
 		code = None
 	return code
 
-# PartA Time Complexity:  O(n*m) + O(nlogn) = O(nlogn) assuming m is not a big number
-#    - find_code(): O(nm) loops through all calls n, worst case m as length of phone number 
-#      - is_fixed_line() : O(1)
-#      - get_fixed_line_code(): O(m), m as length of phone number
-#      - is_mobile(): O(1)
-#      - is_telemarketer(): O(1)
-#    - checking if code in in codes list: O(n) 
-#    - printing :
-#      - sort: O(nlong)
-#      - printing: O(n)
+
 def find_codes(data):
 	codes = []
 	for row in data:
@@ -110,11 +102,9 @@ all_codes = find_codes(calls)
 print_sorted_codes(all_codes)
 
 
-# PartB Time Complexity:  O(n*m) 
-#    - loop through calls: O(n)
-#      - is_fixed_line() : O(1)
-#      - get_fixed_line_code(): O(m), m as length of phone number
-
+# ---------------------------------------
+# PART B
+# ----------------------------------------
 def count_calls_by_code(calls, code='080'):
 	outgoing = 0
 	incoming = 0
