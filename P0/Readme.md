@@ -37,3 +37,18 @@
        - is_fixed_line() : O(1) just checks for 1 characer by direct access
        - get_fixed_line_code(): O(m), m as length of phone number for splitting phone number by ) 
 
+-----
+
+- Task 4: O(n * m) + O(nlogn) + O(n) = O(n^2) , in the worst case m is a big list O(n^2) 
+  - find_telemarketers:
+    - checking for text reciever and senders: O(n * m)
+      - O(n) loop throught texts 
+      - check if number is in texters list: O(m)
+    - checking phone_calls list if received a call: O(n * m)
+       - O(n) loop through calls
+       - O(m) check if number is already in list of received calls to avoid dplication
+    - checking phone_calls list if caller is a telemarker: O(n * m)
+       - O(n) loop through calls
+       - O(m) check if it's not in 2 lits of recevied_calls and texters
+   - sorting: O(nlogn)
+   - print: O(n)
