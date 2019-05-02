@@ -35,7 +35,7 @@ def count_different_phone_numbers(texts, calls):
         if call[0] not in unique_numbers:
             count+=1
             unique_numbers.append(call[0])
-        if text[1] not in unique_numbers:
+        if call[1] not in unique_numbers:
             count+=1
             unique_numbers.append(call[1])
             

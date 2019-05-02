@@ -19,28 +19,32 @@ Print a message:
 "<telephone number> spent the longest time, <total time> seconds, on the phone during 
 September 2016.".
 """
-def get_month_name(month_num):
-    months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octobre', 'November', 'December']
-    return months[month_num-1]
 
-
-# Time complexity: O(n)
-# Loop thought calls: O(n) 
-# splitting phone number: O(m) which is not significant
-# getting month_name : O(1)
 def longest_time_on_call(calls):
-    longest_time = None
-    telephone_number = None
-    date = None
+    numbers_with_time = {}
+    max_time = 0
+    number = None
     for call in calls:
-        if telephone_number is None or float(call[-1])>longest_time:
-            longest_time = float(call[-1])
-            telephone_number = call[0]
-            date = call[-2].split(' ')[0]
-    if date is not None:
-        date_values = date.split('-')
-        year = date_values[-1]
-        month = get_month_name(int(date_values[0]))
-        print('{} spent the longest time, {} seconds, on the phone during {} {}.'.format(telephone_number, longest_time, month, year))
+        phone1 = call[0]
+        phone2 = call[1]
+        time = int(call[-1])
+        if phone1 in numbers_with_time:
+            numbers_with_time[phone1] += time
+        else:
+            numbers_with_time[phone1] = time
+        if phone2 in numbers_with_time:
+            numbers_with_time[phone2] += time
+        else:
+            numbers_with_time[phone2] = time
+
+    for phone, time in numbers_with_time.items():
+        if number is None:
+            max_time = time
+            number = phone
+        else:
+            if time > max_time:
+                number = phone
+                max_time = time
+    print('{} spent the longest time, {} seconds, on the phone during September 2016.'.format(number, max_time))
     
 longest_time_on_call(calls)

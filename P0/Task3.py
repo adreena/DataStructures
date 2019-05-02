@@ -72,7 +72,7 @@ def find_code(phone):
 	if is_fixed_line(phone):
 		code = get_fixed_line_code(phone)
 	elif is_mobile(phone, length):
-		code = phone[:int(length/2)]
+		code = phone[:4]
 	elif is_telemarketer(phone):
 		code = '140'
 	else:
@@ -119,9 +119,9 @@ def count_calls_by_code(calls, code='080'):
 					code_2 = get_fixed_line_code(phone_2)
 					if code_2 == code:
 						incoming += 1
-	percent = 0
+	percent = 0.
 	if outgoing > 0:
-		percent = (incoming/outgoing)*100
+		percent = float(incoming)/float(outgoing)*100
 	print("{:.2f} percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore.".format(percent))
 
 count_calls_by_code(calls)

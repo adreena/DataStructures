@@ -34,29 +34,35 @@ def is_possibly_telemarketer(phone):
 
 
 def find_telemarketers(calls, texts):
-	received_calls=[]
+	all_numbers=[]
+	incoming_call = []
 	telemarketers = []
-	texters= []
-	for text in texts:
-		phone_1 = text[0]
-		phone_2 = text[1]
-		if is_possibly_telemarketer(phone_1) and phone_1 not in texters:
-			texters.append(phone_1)
-		if is_possibly_telemarketer(phone_2) and phone_2 not in texters:
-			texters.append(phone2)
+	texters = []
+	for item in texts+calls:
+		phone_1 = item[0]
+		phone_2 = item[1]
+		if phone_1 not in all_numbers:
+			all_numbers.append(phone_1)
+		if phone_2 not in all_numbers:
+			all_numbers.append(phone_2)
 
 	for call in calls:
 		phone = call[1]
-		if is_possibly_telemarketer(phone)  and phone not in received_calls:
-			received_calls.append(phone)
+		if phone not in incoming_call:
+			incoming_call.append(phone)
 
-	for call in calls:
-		phone = call[0]
+	for text in texts:
+		phone_1 = call[0]
+		phone_2 = call[1]
 		# never receive call:
-		if is_possibly_telemarketer(phone) and phone not in received_calls:
-			if phone not in texters and phone not in telemarketers:
-				telemarketers.append(phone)
+		if phone_1 not in texters:
+			texters.append(phone_1)
+		if phone_2 not in texters:
+			texters.append(phone_2)
 
+	for number in all_numbers:
+		if number not in texters and number not in incoming_call:
+			telemarketers.append(number)
 	telemarketers.sort()
 	print("These numbers could be telemarketers: ")
 	for phone in telemarketers:
